@@ -4,6 +4,9 @@ build
 .project
 .settings/
 .classpath
+.vscode/
+bin/
+bingo-helper/
 nbactions.xml
 nb-configuration.xml
 nbproject/

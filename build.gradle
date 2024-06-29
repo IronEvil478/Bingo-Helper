@@ -10,7 +10,7 @@ repositories {
 	mavenCentral()
 }
 
-def runeLiteVersion = 'latest.release'
+def runeLiteVersion = '1.10.33.1'
 
 dependencies {
 	compileOnly group: 'net.runelite', name:'client', version: runeLiteVersion
@@ -21,9 +21,11 @@ dependencies {
 	testImplementation 'junit:junit:4.12'
 	testImplementation group: 'net.runelite', name:'client', version: runeLiteVersion
 	testImplementation group: 'net.runelite', name:'jshell', version: runeLiteVersion
+
+	
 }
 
-group = 'com.example'
+group = 'BingoHelper'
 version = '1.0-SNAPSHOT'
 
 tasks.withType(JavaCompile) {
