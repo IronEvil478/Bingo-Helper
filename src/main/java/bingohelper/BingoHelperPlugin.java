@@ -66,6 +66,7 @@ public class BingoHelperPlugin extends Plugin {
     private String team;
     private boolean initialValuesLoaded = false;
     private List<String> allItems;
+    private String webhook;
 
     @Override
     protected void startUp()
@@ -191,6 +192,8 @@ public class BingoHelperPlugin extends Plugin {
             }
         }
         allItems = list;
+        
+        webhook = event.getWebhook();
 
         overlayManager.add(overlay);
         overlay.setEventName(event.getName());
@@ -265,7 +268,7 @@ public class BingoHelperPlugin extends Plugin {
     // Web call processing
     private void sendWebhook(WebhookBody webhookBody)
     {
-        String configUrl = config.webhook();
+        String configUrl = webhook;
         if (Strings.isNullOrEmpty(configUrl))
         {
             return;

@@ -16,13 +16,6 @@ public interface BingoHelperConfig extends Config{
     String bingostring();
 
     @ConfigItem(
-            keyName = "webhook",
-            name = "Webhook URL(s)",
-            description = "The Discord Webhook URL to send messages to"
-    )
-    String webhook();
-
-    @ConfigItem(
         keyName = "usecurrenttile",
         name = "Use Current Tile",
         description = "Limits the discord messages to just items on the current tile."
