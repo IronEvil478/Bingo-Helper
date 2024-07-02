@@ -73,7 +73,12 @@ public class BingoHelperPlugin extends Plugin {
     {
         // We can only do this when logged in or we error on the players name
         if (client.getGameState() == GameState.LOGGED_IN) {
-            bingoInitializor();
+            try {
+                bingoInitializor();
+            } catch (Exception e) {
+                // Failed to load
+                return;
+            }
             initialValuesLoaded = true;
         }
         
@@ -90,7 +95,12 @@ public class BingoHelperPlugin extends Plugin {
         // This handles the wait for login so that we can load the players name
 		if (!initialValuesLoaded)
 		{
-			bingoInitializor();
+            try {
+                bingoInitializor();
+            } catch (Exception e) {
+                // Failed to load
+                return;
+            }
 			initialValuesLoaded = true;
 		}
 	}
@@ -98,7 +108,13 @@ public class BingoHelperPlugin extends Plugin {
     @Subscribe
     public void onConfigChanged(ConfigChanged configChanged)
     {
-        bingoInitializor();
+        try {
+            bingoInitializor();
+        } catch (Exception e) {
+            // Failed to load
+            initialValuesLoaded = false;
+            return;
+        }
         if (event == null) {
             log.info("No valid event found");
         }
@@ -171,7 +187,8 @@ public class BingoHelperPlugin extends Plugin {
     }
     
     // Tooling for making things work
-    private void bingoInitializor()
+    // Throws exception in several places, biggest thing is the name on login screen and the Json being miss configured
+    private void bingoInitializor() throws Exception
     {
         try {
             event = null;
