@@ -234,11 +234,18 @@ public class BingoHelperPlugin extends Plugin {
             return team;
         }
         for (Team teamobj : event.getTeams()) {
-            if (teamobj.getPlayers().contains(getPlayerName())) {
+            if (teamListToLower(teamobj.getPlayers()).contains(getPlayerName().toLowerCase())) {
                 return teamobj.getName();
             }
         }
         return team;
+    }
+    private List<String> teamListToLower(List<String> players) {
+        List<String> lowerCasePlayers = new ArrayList<>();
+        for (String player : players) {
+            lowerCasePlayers.add(player.toLowerCase());
+        }
+        return lowerCasePlayers;
     }
     private String getItemName(int itemID) 
     {
